@@ -1,0 +1,11 @@
+<h1> <%= @director_type.capitalize %> director</h1>
+
+<p>
+  <% if @director_type == "eldest" %>
+    The eldest director in our dataset right now is <%= @oldest.name %>, born on <%= @oldest.dob.strftime("%B %e, %Y") %>.
+  <% end %>
+
+  <% if @director_type == "youngest" %>
+    The youngest director in our dataset right now is <%= @youngest.name %>, born on <%= @youngest.dob.strftime("%B %e, %Y") %>.
+  <% end %>
+</p>
