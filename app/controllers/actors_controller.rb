@@ -9,9 +9,11 @@ class ActorsController < ApplicationController
   def actor_details
 
     @the_id = params.fetch("an_id")
-    @the_movie = Actor.where({:id => @the_id}).at(0)
+    @the_actor = Actor.where({:id => @the_id}).at(0)
 
-    # movie that is directed by the director
+    # movie that this actor play
+    @filmography = Character.where({ :actor_id => @the_actor.id })
+
 
     render({ :template => "actors_templates/show" })
   end
