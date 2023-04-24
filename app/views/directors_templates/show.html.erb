@@ -43,79 +43,67 @@
     Image
   </dt>
   <dd>
-    <img src="<%= @the_director.image %>" style="width:250px;">
+    <%#=@the_director.image%>
+    <img src="http://robohash.org/<%= @the_director.image %>">
   </dd>
 
   <dt>
     Created at
   </dt>
   <dd>
-    <%= time_ago_in_words(@the_director.created_at) %>
+    <%= time_ago_in_words(@the_director.created_at) %> ago
   </dd>
 
   <dt>
     Updated at
   </dt>
   <dd>
-    <%= time_ago_in_words(@the_director.updated_at) %>
+    <%= time_ago_in_words(@the_director.updated_at) %> ago
   </dd>
 </dl>
 
 <hr>
 
+
+
 <h2>Filmography</h2>
 
 <table border="1">
-  <tbody><tr>
-    <th>
-      ID
-    </th>
 
-    <th>
-      Image
-    </th>
-
-    <th>
-      Title
-    </th>
-
-    <th>
-      Year
-    </th>
-
-    <th>
-      Director
-    </th>
-
-    <th>
-    </th>
-  </tr>
-
+<% @filmography.each do |a_film| %>
   <tr>
     <td>
-      1
+      <%= a_film.id %>
     </td>
 
     <td>
-      <img src="https://image.tmdb.org/t/p/w500/5KCVkau1HEl7ZzfPsKAPM0sMiKc.jpg" style="width:250px;">
+      <img src="http://robohash.org/<%= a_film.image %>?set=set4">
+      
     </td>
 
     <td>
-      The Shawshank Redemption
+      <%= a_film.title %>
     </td>
 
     <td>
-      1994
+      <%= a_film.year %>
     </td>
 
     <td>
-      Frank Darabont
+      <% d = Director.where({ :id => a_film.director_id }).at(0) %>
+      <%= d.name %>
+      <%# a_film.director_id %>
     </td>
 
     <td>
-      <a href="/movies/1">
+      <a href="<%= a_film.director_id %>">
         Show details
       </a>
     </td>
+
+
+
   </tr>
-</tbody></table>
+<% end %>
+
+</table>
