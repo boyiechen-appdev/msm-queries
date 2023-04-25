@@ -81,9 +81,10 @@
     </td>
 
     <td>
-      <% movie = Movie.where({ :id => a_role.movie_id }).at(0) %>
-      <% d = Director.where({ :id => movie.id }).at(0) %>
-      <%= d.name %>
+      <%# movie = Movie.where({ :id => a_role.movie_id }).at(0) %>
+      <%# d = Director.where({ :id => movie.id }).at(0) %>
+      <%#= d.name %>
+      <%= movie.my_director.name%>
     </td>
 
     <td>
